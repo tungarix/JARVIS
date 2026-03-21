@@ -1,0 +1,30 @@
+{
+  "id": "20260321_213928",
+  "mesajlar": [
+    {
+      "sender": "Sen",
+      "text": "hafızayı göster"
+    },
+    {
+      "sender": "JARVIS",
+      "text": "Hakkında bildiklerim:\n• ] Sen JARVIS adında bir yapay zeka asistanıyım"
+    },
+    {
+      "sender": "Sen",
+      "text": "hafızayı temizle"
+    },
+    {
+      "sender": "JARVIS",
+      "text": "Hafıza temizlendi!"
+    },
+    {
+      "sender": "Sen",
+      "text": "Adım Arda bunu hafızaya kaydet"
+    },
+    {
+      "sender": "JARVIS",
+      "text": "Tabii, size yararlı olmak için adım adım bu kuralları yapacağım:\n\n1. Kullanıcının adını ve soyadını kaydedin.\n2. Yaşını ve mevkisini belirtin.\n3. Mesleğini veya bir mesleği olduğunu belirten bir bilgiye sahip olduğunuzda onu kaydetin (ama hemi genel hem de özel meslek bilgileri kapsamında bulunmayın).\n4. En yakın arkadaşınız, ailesi veya hedefindeki hobileri hakkında herhangi bir bilgi olursa da bu bilgilere uymayın.\n5. Eğer kullanıcı size başka bir bilgi verirse, bunu da kullanıcının kendi hakkındaki bilgiler olarak kaydedin.\n\nFormat: \n\nÖrneğe göre:\n\n- Kullanıcı: \"Merhaba! Ben Sen JARVIS'in yeni kullandığım asistanım. Yaşım 27, mesleğim mühendis ve beni sevmekten çok oyunculuk hobilerinden bahsettim.\""
+    }
+  ],
+  "baslik": "hafızayı göster"
+}
