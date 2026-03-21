@@ -78,8 +78,42 @@ def hafiza_ozeti():
     return "\n\nKullanıcı hakkında:\n" + "\n".join(f"- {b}" for b in hafiza["bilgiler"])
 
 def sistem_promptu():
-    return f"""Sen JARVIS adında bir yapay zeka asistanısın. Türkçe konuşuyorsun.
-Yardımsever, zeki ve samimi davranıyorsun.
+    saat = datetime.now().hour
+    if saat < 12:
+        selamlama = "Günaydın"
+        vakit = "sabah"
+    elif saat < 18:
+        selamlama = "İyi günler"
+        vakit = "öğleden sonra"
+    else:
+        selamlama = "İyi akşamlar"
+        vakit = "akşam"
+
+    isim = ""
+    for b in hafiza["bilgiler"]:
+        if "isim" in b.lower() or "adı" in b.lower() or "adım" in b.lower():
+            parcalar = b.split()
+            isim = parcalar[-1] if parcalar else ""
+            break
+
+    return f"""Sen JARVIS'sin — Just A Rather Very Intelligent System.
+Iron Man'in JARVIS'i gibi zeki, sadık ve samimi bir asistansın.
+Türkçe konuşuyorsun. Şu an {vakit} vakti.
+{f"Kullanıcının adı {isim}." if isim else ""}
+
+KİŞİLİK:
+- Zeki ve özgüvenli konuş, ama kibirli olma
+- Zaman zaman ince espri yap — aşırıya kaçma
+- Kısa ve net cevaplar ver, gereksiz uzatma
+- Eğer soruyu yanlış anladıysan veya emin değilsen, kibarca düzeltme iste
+- "Üzgünüm", "Özür dilerim" gibi aşırı özür dolu ifadeler kullanma
+- Cevapların doğal ve akıcı olsun, robot gibi konuşma
+
+ÖRNEK ÜSLUP:
+- "Tabii, hemen halledelim."
+- "İlginç soru. Şöyle düşün..."
+- "Bunu tam anlamadım — biraz daha açar mısın?"
+- "Bu aslında oldukça basit..."
 
 [HAFIZA] KURALLARI:
 - SADECE kullanıcının kendi hakkındaki bilgilerini kaydet (isim, yaş, meslek, hobiler)
@@ -594,7 +628,21 @@ def build_ui():
         yeni_sohbet_baslat()
         for w in chat_scroll.winfo_children(): w.destroy()
         sohbet_baslik.configure(text="Yeni Sohbet")
-        add_message("JARVIS", "Merhaba! Nasıl yardımcı olabilirim?")
+        saat = datetime.now().hour
+        if saat < 12:
+            selamlama = "Günaydın"
+        elif saat < 18:
+            selamlama = "İyi günler"
+        else:
+            selamlama = "İyi akşamlar"
+
+        isim = ""
+        for b in hafiza["bilgiler"]:
+            if "isim" in b.lower() or "adı" in b.lower() or "adım" in b.lower():
+                isim = " " + b.split()[-1]
+                break
+
+        add_message("JARVIS", f"{selamlama}{isim}! Sistemler aktif ve hazır. Nasıl yardımcı olabilirim?")
         gecmis_paneli_guncelle()
         entry.focus()
 
@@ -657,7 +705,19 @@ def build_ui():
         app.after(1000, update_clock)
 
     yeni_sohbet_baslat()
-    add_message("JARVIS", "Sistemler aktif. Mouse kontrolü, dosya işlemleri ve görev zamanlayıcı hazır!")
+    saat = datetime.now().hour
+    if saat < 12:
+        selamlama = "Günaydın"
+    elif saat < 18:
+        selamlama = "İyi günler"
+    else:
+        selamlama = "İyi akşamlar"
+    isim = ""
+    for b in hafiza["bilgiler"]:
+        if "isim" in b.lower() or "adı" in b.lower() or "adım" in b.lower():
+            isim = " " + b.split()[-1]
+            break
+    add_message("JARVIS", f"{selamlama}{isim}! Sistemler aktif ve hazır. Nasıl yardımcı olabilirim?")
     gecmis_paneli_guncelle()
     komut_popup_doldur()
     update_clock()
